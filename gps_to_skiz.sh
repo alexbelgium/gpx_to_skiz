@@ -65,7 +65,7 @@ for input in *.gpx; do
   # Create Track.xml - Speeds
   sed -i "s=VAR_maxspeed=$(cut -d, -f4,4 < gpx_to_skiz/"$filename"/Nodes.csv | sort -nr | head -1)=g" gpx_to_skiz/"$filename"/Track.xml
   # Create skiz
-  zip -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
+  zip -j -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
   # Remove temporary folder
   rm -r gpx_to_skiz/"$filename"
 done

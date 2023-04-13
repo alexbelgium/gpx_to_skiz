@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Not working, don't use please"
+exit 0
+
 ########################
 # Install dependencies #
 ########################
@@ -21,12 +24,10 @@ for input in /share/*.gpx, do
 ##################
   # duplicate template
   cp "$input" temp.gpx
-  # Remove until first data point
-  sed '1,/^<name>$/d' temp.gpx
-  # Convert all times to epoch
 #TODO
-  # Create nodes.csv 
-  gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed,rptdigits=6 -o unicsv,fields=time+lat+lon+alt+speed -F nodes.csv
+  # Convert to csv 
+  # gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o unicsv -F nodes.csv
+ gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o xcsv,style=/gpsbabel.style -F nodes.csv
 
 
   

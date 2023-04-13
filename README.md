@@ -3,7 +3,7 @@ Convert gpx files in skiz format used in Ski Tracks
 
 
 SKIZ format :
-- nodes.csv
+- nodes.csv (time,latitude,longitude,altitude,speed,??,??,??)
 - 
 - 
 - 

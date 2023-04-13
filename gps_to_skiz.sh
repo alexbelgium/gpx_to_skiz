@@ -36,7 +36,7 @@ curl -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/
 #############################################
 
 # For all files
-for input in *.gpx, do
+for input in *.gpx; do
   # Text
   echo "Converting $input to skiz format"
   # Extract filename

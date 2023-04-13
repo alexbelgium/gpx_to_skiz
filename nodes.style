@@ -8,7 +8,7 @@ FIELD_DELIMITER     COMMA
 RECORD_DELIMITER    NEWLINE
 #BADCHARS            #
 # FIELDS ############################################
-IFIELD   TIMET_TIME,"","%lld"      # Time in unix
+IFIELD   TIMET_TIME,"","%lld.000"  # Time in unix
 IFIELD   LAT_DECIMAL,"", "%.6f"    # Latitude
 IFIELD   LON_DECIMAL,"", "%.6f"    # Longitude
 IFIELD   PATH_SPEED,"", "%.6f"     # Path speed

@@ -60,7 +60,8 @@ for input in *.gpx, do
   sed -i "s=VAR_end=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_duration=$(($(date -d ${END_TIME} +%s)-$(date -d ${START_TIME} +%s))).000=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_tz=${START_TIME: -3}=g" gpx_to_skiz/"$filename"/Track.xml
-  
+  # Create Track.xml - Speeds
+  sed -i "s=VAR_maxspeed=$(cut -d, -f4,4 < gpx_to_skiz/"$filename"/Nodes.csv | sort -nr | head -1)=g" gpx_to_skiz/"$filename"/Track.xml
   # Create skiz
   zip -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
   # Remove temporary folder

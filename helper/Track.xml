@@ -12,8 +12,8 @@
 	conditions="unknown" 
 	weather="unknown" 
 	rating="0"
-	device="VAR_device" 
-	sensors="barometer" 
+	device="unknown" 
+	sensors="unknown" 
 	created="" 
 	modified="" 
 	owner="skitracks-android@corecoders.com">

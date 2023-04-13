@@ -4,8 +4,9 @@ This app will take all .gpx from the folder it is executed, and convert it to .s
 To run, download and execute the .sh script in a linux Ubuntu environement.
 
 # Limitations
-- GPX files do not contain gps precision data. They will appear as 0 in all converted skiz files.
-- I do not know what the last field is. It will therefore be fixed at 0.25 for all files
+- GPX files don't seem to contain gps precision data. This will be set to 0.
+- Bearing not supported by gpsbabel. This will be set to 0.
+- I do not know what the last field is but it was 0.25 in all files I checked.  This will be set to 0.25.
 
 # SKIZ format
 - Nodes.csv : time (unix),latitude,longitude,altitude(m),speed(m/s),??,gps precision(m), 0.25

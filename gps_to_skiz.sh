@@ -3,66 +3,62 @@
 echo "Not working, don't use please"
 exit 0
 
+echo "###########################################"
+echo "               .GPX TO .SKIZ               "
+echo "               by Alexbelgium              "
+echo "###########################################"
+echo ""
+echo "This app will take all .gpx from the folder it is executed, and convert it to .skiz format compatible with Ski Tracks"
+echo "The converted files will be stored in a new folder named gps_to_skiz"
+echo ""
+echo "https://github.com/alexbelgium/gpx_to_skiz"
+echo ""
+echo "###########################################"
+
 ########################
 # Install dependencies #
 ########################
-apt-get update
+echo "Installing gpsbabel"
+apt-get update || (echo "This app only works on Ubuntu, sorry" && exit 1)
 apt-get install -yqq gpsbabel
-curl -LO https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/nodes.style # Download reference file
+echo "Installing zip"
+apt-get install -yqq zip
+
+# Prepare directory
+echo "Making gpx_to_skiz directory"
+mkdir -p gpx_to_skiz
+
+# Download reference file
+echo "Downloading nodes.style"
+curl -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
+echo "Downloading template"
+curl -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
 
 #############################################
 # Convert gpx to individual skiz components #
 #############################################
 
 # For all files
-for input in /share/*.gpx, do
+for input in *.gpx, do
+  # Text
+  echo "Converting $input to skiz format"
   # Extract filename
   filename="${input%.*}"
   # Create directory
-  mkdir "$filename"
-
-# Create nodes.csv
-##################
-  # duplicate template
-  cp "$input" temp.gpx
-  # Create nodes.csv
-  gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o xcsv,style=nodes.style -F nodes.csv
-
-  
-  echo "$(sed -n "s|.*lat=\"(.*)" lon.*|\1|p" temp.gpx)"
-sed '/auir/!d;q'
-time="$(date -d "$time" +"%s")"
-
-gpsbabel -i unicsv,fields=time+lat+lon+alt+speed -f file.csv -o gpx -F file.gpx
-
-
-rm temp.gpx
+  mkdir -p gpx_to_skiz/"$filename"
+  # Create Nodes.csv
+  gpsbabel -t -i gpx -f "$input" -x track,merge,speed -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
+  # Create Photos.csv
+  touch gpx_to_skiz/"$filename"/Photos.csv
+  # Create Segment.csv
+  touch gpx_to_skiz/"$filename"/Segment.csv
+  # Create Track.xml
+  cp gpx_to_skiz/Track.xml gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_parseObjectId=$(echo $RANDOM | md5sum | head -c 20; echo;)=g" gpx_to_skiz/"$filename"/Track.xml
+  # Create skiz
+  zip -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
+  # Remove temporary folder
+  rm -r gpx_to_skiz/"$filename"
 done
 
-# Clean files
-rm gpx_to_csv.style # Clean reference file
-
-
-
-
-
-
-1. Rename .skiz to .zip
-
-2. Create Nodes.csv
-
-- Delete file until first "<trkpt lat="
-
-- - Extract first lat, round to 6 after decimal
-- Extract first lon, round to 6 after decimal
-- Extract altitude, round to 2 after decimal
-- 0.0
-- 0.00
-- 
-
-"$time,$lat,$lon,$alt,$speed,$??;$??,$??"
-1681210036.999,46.007251,6.691240,1723.58,0.0,0.00,24.000000,0.250000
-
-
-Segment.csv
-Track.xml
+echo "All file converted"

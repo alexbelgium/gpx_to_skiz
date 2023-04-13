@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Not working, don't use please"
-exit 0
-
 echo "###########################################"
 echo "               .GPX TO .SKIZ               "
 echo "               by Alexbelgium              "
@@ -54,7 +51,16 @@ for input in *.gpx, do
   touch gpx_to_skiz/"$filename"/Segment.csv
   # Create Track.xml
   cp gpx_to_skiz/Track.xml gpx_to_skiz/"$filename"/Track.xml
+  # Create Track.xml - UID
   sed -i "s=VAR_parseObjectId=$(echo $RANDOM | md5sum | head -c 20; echo;)=g" gpx_to_skiz/"$filename"/Track.xml
+  # Create Track.xml - Times
+  START_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | head -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%:z" -d)"
+  END_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | tail -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%:z" -d)"
+  sed -i "s=VAR_start=$START_TIME=g" gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_end=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_duration=$(($(date -d ${END_TIME} +%s)-$(date -d ${START_TIME} +%s))).000=g" gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_tz=${START_TIME: -3}=g" gpx_to_skiz/"$filename"/Track.xml
+  
   # Create skiz
   zip -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
   # Remove temporary folder

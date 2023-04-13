@@ -8,6 +8,7 @@ exit 0
 ########################
 apt-get update
 apt-get install -yqq gpsbabel
+curl -LO https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/nodes.style # Download reference file
 
 #############################################
 # Convert gpx to individual skiz components #
@@ -24,13 +25,9 @@ for input in /share/*.gpx, do
 ##################
   # duplicate template
   cp "$input" temp.gpx
-#TODO
-  # Convert to csv 
-  # gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o unicsv -F nodes.csv
- gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o xcsv,style=/gpsbabel.style -F nodes.csv
+  # Create nodes.csv
+  gpsbabel -t -i gpx -f temp.gpx -x track,merge,speed -o xcsv,style=nodes.style -F nodes.csv
 
-
-  
   
   echo "$(sed -n "s|.*lat=\"(.*)" lon.*|\1|p" temp.gpx)"
 sed '/auir/!d;q'
@@ -41,6 +38,14 @@ gpsbabel -i unicsv,fields=time+lat+lon+alt+speed -f file.csv -o gpx -F file.gpx
 
 rm temp.gpx
 done
+
+# Clean files
+rm gpx_to_csv.style # Clean reference file
+
+
+
+
+
 
 1. Rename .skiz to .zip
 

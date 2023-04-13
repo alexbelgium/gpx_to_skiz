@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clear
+clear -x
 
 echo "###########################################"
 echo "               .GPX TO .SKIZ               "

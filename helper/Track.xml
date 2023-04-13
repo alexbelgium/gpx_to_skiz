@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created using CCXMLEncoder(Android), Copyright 2020 Core Coders Ltd. -->
 <track version="1.0" 
-	parseObjectId="VARIABLE1"
-	start="VARIABLE2" 
-	finish="VARIABLE3" 
-	duration="VARIABLE4" 
-	tz="VARIABLE5" 
-	name="VARIABLE6" 
+	parseObjectId="VAR_parseObjectId"
+	start="VAR_start" 
+	finish="VAR_finish" 
+	duration="VAR_duration" 
+	tz="VAR_tz" 
+	name="VAR_name" 
 	description="unknown" 
 	activity="unknown"
 	conditions="unknown" 
 	weather="unknown" 
 	rating="0"
-	device="VARIABLE7" 
+	device="VAR_device" 
 	sensors="barometer" 
 	created="" 
 	modified="" 
 	owner="skitracks-android@corecoders.com">
 	<metrics>
-		<maxspeed>VARIABLE_MAXSPEED</maxspeed>
+		<maxspeed>VAR_maxspeed</maxspeed>
 		<maxdescentspeed>VARIABLE_DESCENTSPEED</maxdescentspeed>
 		<maxascentspeed>VARIABLE_ASCENTSPEED</maxascentspeed>
 		<maxdescentsteepness>35.06844643862689</maxdescentsteepness>

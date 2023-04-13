@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using CCXMLEncoder(Android), Copyright 2020 Core Coders Ltd. -->
+<track version="1.0" 
+	parseObjectId="VARIABLE1"
+	start="VARIABLE2" 
+	finish="VARIABLE3" 
+	duration="VARIABLE4" 
+	tz="VARIABLE5" 
+	name="VARIABLE6" 
+	description="unknown" 
+	activity="unknown"
+	conditions="unknown" 
+	weather="unknown" 
+	rating="0"
+	device="VARIABLE7" 
+	sensors="barometer" 
+	created="" 
+	modified="" 
+	owner="skitracks-android@corecoders.com">
+	<metrics>
+		<maxspeed>VARIABLE_MAXSPEED</maxspeed>
+		<maxdescentspeed>VARIABLE_DESCENTSPEED</maxdescentspeed>
+		<maxascentspeed>VARIABLE_ASCENTSPEED</maxascentspeed>
+		<maxdescentsteepness>35.06844643862689</maxdescentsteepness>
+		<maxascentsteepness>37.6146995841042</maxascentsteepness>
+		<maxverticaldescentspeed>0.0</maxverticaldescentspeed>
+		<maxverticalascentspeed>0.0</maxverticalascentspeed>
+		<totalascent>10477.855100076133</totalascent>
+		<totaldescent>10497.026879743125</totaldescent>
+		<maxaltitude>2478.29389027208</maxaltitude>
+		<minaltitude>1618.050457889908</minaltitude>
+		<distance>87490.10831389762</distance>
+		<profiledistance>0.0</profiledistance>
+		<descentdistance>51086.13889653422</descentdistance>
+		<ascentdistance>36403.969417363405</ascentdistance>
+		<averagespeed>3.1585830704287305</averagespeed>
+		<averagedescentspeed>6.0769362586970095</averagedescentspeed>
+		<averageascentspeed>4.006463932890368</averageascentspeed>
+		<duration>27695.582000017166</duration>
+		<startaltitude>1737.2657822165118</startaltitude>
+		<finishaltitude>1724.1844405160937</finishaltitude>
+		<ascents>19</ascents>
+		<descents>19</descents>
+		<laps>0</laps>
+	</metrics>
+</track>

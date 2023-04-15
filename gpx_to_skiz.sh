@@ -75,13 +75,14 @@ for input in *.gpx; do
   START_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | head -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%:z" -d)"
   END_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | tail -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%:z" -d)"
   sed -i "s=VAR_start=$START_TIME=g" gpx_to_skiz/"$filename"/Track.xml
-  sed -i "s=VAR_end=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_finish=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_duration=$(($(date -d ${END_TIME} +%s)-$(date -d ${START_TIME} +%s))).000=g" gpx_to_skiz/"$filename"/Track.xml
-  sed -i "s=VAR_tz=${START_TIME: -3}=g" gpx_to_skiz/"$filename"/Track.xml
+  sed -i "s=VAR_tz=${START_TIME##*+}=g" gpx_to_skiz/"$filename"/Track.xml
   # Create Track.xml - Speeds
   sed -i "s=VAR_maxspeed=$(cut -d, -f4,4 < gpx_to_skiz/"$filename"/Nodes.csv | sort -nr | head -1)=g" gpx_to_skiz/"$filename"/Track.xml
   # Create skiz
-  zip -j -r gpx_to_skiz/"$filename".skiz gpx_to_skiz/"$filename"/*
+  zip -j -r gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename"/*
+  mv gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename".skiz
   # Remove temporary folder
   rm -r gpx_to_skiz/"$filename"
 done

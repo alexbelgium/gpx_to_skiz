@@ -43,10 +43,10 @@ mkdir -p gpx_to_skiz
 
 # Download reference file
 echo "Downloading nodes.style"
-if [ -f gpx_to_skiz/nodes.style ]; rm gpx_to_skiz/nodes.style; fi
+if [ -f gpx_to_skiz/nodes.style ]; then rm gpx_to_skiz/nodes.style; fi
 curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
 echo "Downloading template"
-if [ -f gpx_to_skiz/Track.xml ]; rm gpx_to_skiz/Track.xml; fi
+if [ -f gpx_to_skiz/Track.xml ]; then rm gpx_to_skiz/Track.xml; fi
 curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
 
 #############################################

@@ -18,29 +18,29 @@
 	modified="" 
 	owner="skitracks-android@corecoders.com">
 	<metrics>
-		<maxspeed>VAR_maxspeed</maxspeed>
-		<maxdescentspeed>VAR_maxspeed</maxdescentspeed>
-		<maxascentspeed>unknown</maxascentspeed>
-		<maxdescentsteepness>unknown</maxdescentsteepness>
-		<maxascentsteepness>unknown</maxascentsteepness>
-		<maxverticaldescentspeed>unknown</maxverticaldescentspeed>
-		<maxverticalascentspeed>unknown</maxverticalascentspeed>
-		<totalascent>unknown</totalascent>
-		<totaldescent>unknown</totaldescent>
-		<maxaltitude>VAR_maxaltitude</maxaltitude>
-		<minaltitude>VAR_minaltitude</minaltitude>
-		<distance>VAR_maxaltitude</distance>
+		<maxspeed>0</maxspeed>
+		<maxdescentspeed>0</maxdescentspeed>
+		<maxascentspeed>0</maxascentspeed>
+		<maxdescentsteepness>0</maxdescentsteepness>
+		<maxascentsteepness>0</maxascentsteepness>
+		<maxverticaldescentspeed>0</maxverticaldescentspeed>
+		<maxverticalascentspeed>0</maxverticalascentspeed>
+		<totalascent>0</totalascent>
+		<totaldescent>0</totaldescent>
+		<maxaltitude>0</maxaltitude>
+		<minaltitude>0</minaltitude>
+		<distance>0</distance>
 		<profiledistance>0.0</profiledistance>
-		<descentdistance>unknown</descentdistance>
-		<ascentdistance>unknown</ascentdistance>
-		<averagespeed>unknown</averagespeed>
-		<averagedescentspeed>unknown</averagedescentspeed>
-		<averageascentspeed>unknown</averageascentspeed>
-		<duration>VAR_duration</duration>
-		<startaltitude>unknown</startaltitude>
-		<finishaltitude>unknown</finishaltitude>
-		<ascents>unknown</ascents>
-		<descents>unknown</descents>
+		<descentdistance>0</descentdistance>
+		<ascentdistance>0</ascentdistance>
+		<averagespeed>0</averagespeed>
+		<averagedescentspeed>0</averagedescentspeed>
+		<averageascentspeed>0</averageascentspeed>
+		<duration>0</duration>
+		<startaltitude>0</startaltitude>
+		<finishaltitude>0</finishaltitude>
+		<ascents>0</ascents>
+		<descents>0</descents>
 		<laps>0</laps>
 	</metrics>
 </track>

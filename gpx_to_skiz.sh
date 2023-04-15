@@ -44,10 +44,10 @@ mkdir -p gpx_to_skiz
 # Download reference file
 echo "Downloading nodes.style"
 if [ -f gpx_to_skiz/nodes.style ]; then rm gpx_to_skiz/nodes.style; fi
-curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
+curl --progress-bar -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
 echo "Downloading template"
 if [ -f gpx_to_skiz/Track.xml ]; then rm gpx_to_skiz/Track.xml; fi
-curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
+curl --progress-bar -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
 
 #############################################
 # Convert gpx to individual skiz components #
@@ -61,6 +61,8 @@ for input in *.gpx; do
   filename="${input%.*}"
   # Create directory
   mkdir -p gpx_to_skiz/"$filename"
+  # Modify decimal sign
+  sed -i "s|,|.|g" "$input"
   # Create Nodes.csv
   gpsbabel -t -i gpx -f "$input" -x track,merge,speed -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
   # Create Photos.csv

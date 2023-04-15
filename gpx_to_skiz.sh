@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 clear -x
 
 echo "###########################################"
@@ -23,7 +24,7 @@ if command -v "apk" &>/dev/null; then
     echo "... zip"
     apk add zip --no-cache
     echo "... gpsbabel"
-    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
+    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 elif command -v "apt" &>/dev/null; then
     # If apt-get based
     apt-get update >/dev/null

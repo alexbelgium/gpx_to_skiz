@@ -17,11 +17,20 @@ echo "###########################################"
 ########################
 # Install dependencies #
 ########################
-echo "Installing gpsbabel"
-apt-get update || (echo "This app only works on Ubuntu, sorry" && exit 1)
-apt-get install -yqq gpsbabel
-echo "Installing zip"
-apt-get install -yqq zip
+echo "Installing dependencies, please wait"
+if command -v "apk" &>/dev/null; then
+    # If apk based
+    apk add zip --no-cache >/dev/null
+    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community >/dev/null
+elif command -v "apt" &>/dev/null; then
+    # If apt-get based
+    apt-get update >/dev/null
+    apt-get install -yqq zip >/dev/null
+    apt-get install -yqq gpsbabel >/dev/null
+else
+    echo "Filesystem not supported, please use alpine or ubuntu"
+    exit 1
+fi
 
 # Prepare directory
 echo "Making gpx_to_skiz directory"

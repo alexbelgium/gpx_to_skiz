@@ -21,9 +21,9 @@ echo "Installing dependencies, please wait"
 if command -v "apk" &>/dev/null; then
     # If apk based
     echo "... zip"
-    apk add zip --no-cache >/dev/null
+    apk add zip --no-cache
     echo "... gpsbabel"
-    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community >/dev/null
+    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community
 elif command -v "apt" &>/dev/null; then
     # If apt-get based
     apt-get update >/dev/null
@@ -42,9 +42,9 @@ mkdir -p gpx_to_skiz
 
 # Download reference file
 echo "Downloading nodes.style"
-curl -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
+curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
 echo "Downloading template"
-curl -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
+curl --progress-bar -f -L -s -S https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
 
 #############################################
 # Convert gpx to individual skiz components #

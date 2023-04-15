@@ -14,5 +14,5 @@ IFIELD   LON_DECIMAL,"", "%.6f"    # Longitude
 IFIELD   ALT_METERS,"","%.2f"      # Altitude in meters
 IFIELD   CONSTANT,"0.0","%s"  # ???# Bearing
 IFIELD   PATH_SPEED,"", "%.6f"     # Path speed
-IFIELD   GPS_PDOP,"","%f"          # GPS precision
+IFIELD   GPS_VDOP,"","%f"          # GPS precision
 IFIELD   CONSTANT,"0.250000","%s"  # ???

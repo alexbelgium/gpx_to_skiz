@@ -4,7 +4,7 @@ This app will take all .gpx from the folder it is executed, and convert it to .s
 ## Usage
 To run, download and execute the .sh script in a linux Ubuntu environement. Here is a command line script for that :
 ```bash
-curl --progress-bar -fLO https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gpx_to_skiz.sh
+curl --progress-bar -fL https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gpx_to_skiz.sh > gpx_to_skiz.sh
 chmod +x gpx_to_skiz.sh
 ./gpx_to_skiz.sh
 rm gpx_to_skiz.sh

@@ -2,7 +2,13 @@
 This app will take all .gpx from the folder it is executed, and convert it to .skiz format compatible with Ski Tracks. 
 
 ## Usage
-To run, download and execute the .sh script in a linux Ubuntu environement.
+To run, download and execute the .sh script in a linux Ubuntu environement. Here is a command line script for that :
+```bash
+curl -fLO https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gps_to_skiz.sh
+chmod +x gpx_to_skiz.sh
+./gpx_to_skiz.sh
+rm gpx_to_skiz.sh
+```
 
 It will convert all gpx files in the run folder.
 

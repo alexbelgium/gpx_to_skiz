@@ -19,19 +19,19 @@ echo "###########################################"
 # Install dependencies #
 ########################
 echo "Installing dependencies, please wait"
-if command -v "apk" &>/dev/null; then
-    # If apk based
-    echo "... zip"
-    apk add zip --no-cache
-    echo "... gpsbabel"
-    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
-elif command -v "apt" &>/dev/null; then
+if command -v "apt" &>/dev/null; then
     # If apt-get based
     apt-get update >/dev/null
     echo "... zip"
     apt-get install -yqq zip >/dev/null
     echo "... gpsbabel"
     apt-get install -yqq gpsbabel >/dev/null
+#elif command -v "apk" &>/dev/null; then
+#    # If apk based
+#    echo "... zip"
+#    apk add zip --no-cache
+#    echo "... gpsbabel"
+#    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 else
     echo "Filesystem not supported, please use alpine or ubuntu"
     exit 1

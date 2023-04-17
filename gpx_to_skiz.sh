@@ -129,6 +129,8 @@ for input in *.gpx; do
   END_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | tail -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%:z" -d)"
   sed -i "s=VAR_start=$START_TIME=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_finish=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
+  START_TIME="${START_TIME%.*}"
+  END_TIME="${END_TIME%.*}"
   sed -i "s=VAR_duration=$(($(date -d ${END_TIME} +%s)-$(date -d ${START_TIME} +%s))).000=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_tz=+${START_TIME##*+}=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_name=${filename}=g" gpx_to_skiz/"$filename"/Track.xml

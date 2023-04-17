@@ -65,10 +65,20 @@ for input in *.gpx; do
   filename="${input%.*}"
   # Create directory
   mkdir -p gpx_to_skiz/"$filename"
+  cp "$input" gpx_to_skiz/"$input"
+  input="gpx_to_skiz/$input"
   # Modify decimal sign
   sed -i "s|,|.|g" "$input"
-  # Create Nodes.csv
-  gpsbabel -t -i gpx -f "$input" -x track,merge,speed -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
+  # Standardize bearing
+  sed -i "s|azimuth|PATH_COURSE|g" "$input"
+  sed -i "s|bearing|PATH_COURSE|g" "$input"
+  # Creates Nodes.csv
+  if grep -q "PATH_COURSE" "$input"; then
+  # Use bearing
+    gpsbabel -t -i gpx -f "$input" -x track,merge,speed,course -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
+  else
+  # Calculate bearing
+  fi   
   # Create Photos.csv
   touch gpx_to_skiz/"$filename"/Photos.csv
   # Create Segment.csv
@@ -90,6 +100,7 @@ for input in *.gpx; do
   zip -j -r gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename"/*
   mv gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename".skiz
   # Remove temporary folder
+  rm "gpx_to_skiz/$input"
   rm -r gpx_to_skiz/"$filename"
 done
 

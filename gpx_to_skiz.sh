@@ -72,10 +72,10 @@ mkdir -p gpx_to_skiz
 # Download reference file
 echo "Downloading nodes.style"
 if [ -f gpx_to_skiz/nodes.style ]; then rm gpx_to_skiz/nodes.style; fi
-curl --progress-bar -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
+curl -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/nodes.style --output gpx_to_skiz/nodes.style
 echo "Downloading template"
 if [ -f gpx_to_skiz/Track.xml ]; then rm gpx_to_skiz/Track.xml; fi
-curl --progress-bar -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
+curl -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper/Track.xml --output gpx_to_skiz/Track.xml
 
 #############################################
 # Convert gpx to individual skiz components #

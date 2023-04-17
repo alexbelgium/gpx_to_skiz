@@ -75,9 +75,10 @@ for input in *.gpx; do
   # Creates Nodes.csv
   if grep -q "PATH_COURSE" "$input"; then
   # Use bearing
-    gpsbabel -t -i gpx -f "$input" -x track,merge,speed,course -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
+    gpsbabel -t -i gpx -f "$input" -x track,merge,speed -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
   else
   # Calculate bearing
+    gpsbabel -t -i gpx -f "$input" -x track,merge,speed,course -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
   fi   
   # Create Photos.csv
   touch gpx_to_skiz/"$filename"/Photos.csv

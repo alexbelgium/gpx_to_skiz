@@ -55,6 +55,10 @@ curl --progress-bar -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_s
 
 # For all files
 for input in *.gpx; do
+  if [ -f "$fname" ]; then
+    echo "No gpx files found in the folder this script was run in"
+    exit 0
+  fi
   # Text
   echo "Converting $input to skiz format"
   # Extract filename

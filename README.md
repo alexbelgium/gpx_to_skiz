@@ -3,7 +3,7 @@ This app will take all .gpx from the folder it is executed, and convert it to .s
 I have no linked with Ski Tracks devs, and am only doing this as I am a huge fan of this super app and want to import gpx generated through other apps (the lead dev, Steve, also offers to do it himself if you send him an email containing gpx files ; but I didn't want to bother him every time).
 
 ## Usage
-To run, download and execute the .sh script in a linux Ubuntu environement. Here is a command line script for that :
+To run, download and execute the .sh script in a linux Ubuntu environment. Here is a command line script for that :
 ```bash
 curl --progress-bar -fL https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gpx_to_skiz.sh > gpx_to_skiz.sh
 chmod +x gpx_to_skiz.sh

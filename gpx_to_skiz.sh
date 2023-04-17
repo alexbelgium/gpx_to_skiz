@@ -26,12 +26,21 @@ if command -v "apt" &>/dev/null; then
     apt-get install -yqq zip >/dev/null
     echo "... gpsbabel"
     apt-get install -yqq gpsbabel >/dev/null
-#elif command -v "apk" &>/dev/null; then
-#    # If apk based
-#    echo "... zip"
-#    apk add zip --no-cache
-#    echo "... gpsbabel"
-#    apk add gpsbabel --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
+elif command -v "apk" &>/dev/null; then
+    # If apk based https://github.com/giacinti/gpsbabel-docker/blob/main/Dockerfile   
+    echo "... zip"
+    apk add zip --no-cache
+    echo "... gpsbabel"
+    apk add --no-cache --update \
+        git \
+        qt5-qttools-dev \
+        alpine-sdk \
+        libusb-dev
+    git clone https://github.com/gpsbabel/gpsbabel.git gpsbabel && \
+        cd gpsbabel && \
+        qmake-qt5 && make gpsbabel
+    apk add --no-cache --update libusb qt5-qtbase
+    mv /gpsbabel/gpsbabel /usr/local/bin/gpsbabel
 else
     echo "Filesystem not supported, please use alpine or ubuntu"
     exit 1

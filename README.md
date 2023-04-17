@@ -5,7 +5,7 @@ I have no linked with Ski Tracks devs, and am only doing this as I am a huge fan
 ## Usage
 To run, download and execute the .sh script in a linux Ubuntu environment. Here is a command line script for that :
 ```bash
-curl --progress-bar -fL https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gpx_to_skiz.sh > gpx_to_skiz.sh
+curl -fL https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/gpx_to_skiz.sh > gpx_to_skiz.sh
 chmod +x gpx_to_skiz.sh
 ./gpx_to_skiz.sh
 rm gpx_to_skiz.sh

@@ -17,6 +17,5 @@ Import them into ski tracks. All segment data and statistics should be automatic
 
 ## Limitations
 - Only Ubuntu supported for the moment
-- Bearing not supported by gpsbabel. This will be set to 0.
-- GPX files don't all have GPS precision embedded. High risk this will be set to 0 if not found.
+- GPX files don't all have GPS precision embedded. This will be set to 0 if not found.
 - I do not know what the last field is but it was 0.25 in all files I checked.  This will be set to 0.25.

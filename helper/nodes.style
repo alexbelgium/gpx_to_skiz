@@ -12,7 +12,7 @@ IFIELD   TIMET_TIME,"","%lld.000"  # Time in unix
 IFIELD   LAT_DECIMAL,"", "%.6f"    # Latitude
 IFIELD   LON_DECIMAL,"", "%.6f"    # Longitude
 IFIELD   ALT_METERS,"","%.2f"      # Altitude in meters
-IFIELD   CONSTANT,"0.0","%s"  # ???# Bearing
+IFIELD   PATH_COURSE,"","%f"       # Bearing
 IFIELD   PATH_SPEED,"", "%.6f"     # Path speed
 IFIELD   GPS_VDOP,"","%f"          # GPS precision
 IFIELD   CONSTANT,"0.250000","%s"  # ???

@@ -69,15 +69,23 @@ for input in *.gpx; do
   input="gpx_to_skiz/$input"
   # Modify decimal sign
   sed -i "s|,|.|g" "$input"
+  # Standardize gps precision
+  if ! grep -q "VDOP" "$input"; then
+    if grep -q "PDOP" "$input"; then
+        sed -i "s|PDOP|VDOP|g" "$input"
+    elif grep -q "HDOP" "$input"; then
+        sed -i "s|HDOP|VDOP|g" "$input"
+    fi
+  fi
   # Standardize bearing
   sed -i "s|azimuth|PATH_COURSE|g" "$input"
   sed -i "s|bearing|PATH_COURSE|g" "$input"
   # Creates Nodes.csv
   if grep -q "PATH_COURSE" "$input"; then
-  # Use bearing
+    # Use bearing
     gpsbabel -t -i gpx -f "$input" -x track,merge,speed -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
   else
-  # Calculate bearing
+    # Calculate bearing
     gpsbabel -t -i gpx -f "$input" -x track,merge,speed,course -o xcsv,style=gpx_to_skiz/nodes.style -F gpx_to_skiz/"$filename"/Nodes.csv
   fi   
   # Create Photos.csv

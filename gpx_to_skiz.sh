@@ -21,11 +21,45 @@ echo "###########################################"
 echo "Installing dependencies, please wait"
 if command -v "apt" &>/dev/null; then
     # If apt-get based
-    apt-get update >/dev/null
-    echo "... zip"
-    apt-get install -yqq zip >/dev/null
-    echo "... gpsbabel"
-    apt-get install -yqq gpsbabel >/dev/null
+    echo "Apt based distribution detected..."
+    if ! command -v "gpsbabel" &>/dev/null; then
+        read -p "GPSbabel not installed, proceed with installation (y/n)?" choice
+        case "$choice" in 
+          y|Y ) echo "yes";;
+          n|N ) echo "no, exiting"; exit 1;;
+          * ) echo "invalid";;
+        esac
+        apt-get update >/dev/null
+        if ! command -v "zip" &>/dev/null; then
+            echo "... zip"
+            apt-get install -yqq zip >/dev/null
+        fi
+        echo "... gpsbabel"
+        apt-get install -yqq gpsbabel >/dev/null
+     fi
+elif command -v "apk" &>/dev/null; then
+    # If apk based https://github.com/giacinti/gpsbabel-docker/blob/main/Dockerfile   
+    echo "Apk based distribution detected..."
+    if ! command -v "gpsbabel" &>/dev/null; then
+        read -p "GPSbabel not installed, proceed with installation (y/n)? This will also add the edge repositories to your apk store." choice
+        case "$choice" in 
+          y|Y ) echo "yes";;
+          n|N ) echo "no, exiting"; exit 1;;
+          * ) echo "invalid";;
+        esac
+        if ! command -v "zip" &>/dev/null; then
+            echo "... zip"
+            apk add zip --no-cache
+        fi
+        echo "... gpsbabel : adding edge repositories"
+        sed -i "/edge/d" /etc/apk/repositories
+        echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+        echo "https://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+        echo "https://dl-cdn.alpinelinux.org/alpine/edge/releases" >> /etc/apk/repositories
+        echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
+        echo "... gpsbabel : installing"
+        apk add gpsbabel@ --no-cache
+    fi
 else
     echo "Filesystem not supported, please use alpine or ubuntu"
     exit 1

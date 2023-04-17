@@ -26,8 +26,8 @@ if command -v "apt" &>/dev/null; then
         read -p "GPSbabel not installed, proceed with installation (y/n)?" choice
         case "$choice" in 
           y|Y ) echo "yes";;
-          n|N ) echo "no, exiting"; exit 1;;
-          * ) echo "invalid";;
+          n|N ) echo "no, exiting"; exit 0;;
+          * ) echo "invalid"; exit 1;;
         esac
         apt-get update >/dev/null
         if ! command -v "zip" &>/dev/null; then
@@ -44,8 +44,8 @@ elif command -v "apk" &>/dev/null; then
         read -p "GPSbabel not installed, proceed with installation (y/n)? This will also add the edge repositories to your apk store." choice
         case "$choice" in 
           y|Y ) echo "yes";;
-          n|N ) echo "no, exiting"; exit 1;;
-          * ) echo "invalid";;
+          n|N ) echo "no, exiting"; exit 0;;
+          * ) echo "invalid"; exit 1;;
         esac
         if ! command -v "zip" &>/dev/null; then
             echo "... zip"

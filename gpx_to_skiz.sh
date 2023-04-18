@@ -58,7 +58,7 @@ elif command -v "apk" &>/dev/null; then
         echo "https://dl-cdn.alpinelinux.org/alpine/edge/releases" >> /etc/apk/repositories
         echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
         echo "... gpsbabel : installing"
-        apk add gpsbabel@ --no-cache
+        apk add gpsbabel --no-cache
     fi
 else
     echo "Filesystem not supported, please use alpine or ubuntu"

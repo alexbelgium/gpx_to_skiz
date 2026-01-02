@@ -81,12 +81,25 @@ curl -f -L https://raw.githubusercontent.com/alexbelgium/gpx_to_skiz/main/helper
 # Convert gpx to individual skiz components #
 #############################################
 
+# Convert epoch (possibly with decimals) to ISO string.
+# On Ubuntu (GNU date), it will use decimals if supported.
+# On Alpine (BusyBox date), it falls back to integer seconds.
+date_iso_from_epoch() {
+  local raw="$1"
+  if date -d "@$raw" +"%Y-%m-%dT%H:%M:%S%z" >/dev/null 2>&1; then
+    date -d "@$raw" +"%Y-%m-%dT%H:%M:%S%z"
+  else
+    local secs="${raw%%.*}"
+    date -d "@$secs" +"%Y-%m-%dT%H:%M:%S%z"
+  fi
+}
+
 # For all files
 for input in *.gpx; do
-  if [ -f "$fname" ]; then
-    echo "No gpx files found in the folder this script was run in"
-    exit 0
-  fi
+  #if [ -f "$fname" ]; then
+  #  echo "No gpx files found in the folder this script was run in"
+  #  exit 0
+  #fi
   # Text
   echo "Converting $input to skiz format"
   # Extract filename
@@ -125,8 +138,12 @@ for input in *.gpx; do
   # Create Track.xml - UID
   sed -i "s=VAR_parseObjectId=$(echo $RANDOM | md5sum | head -c 20; echo;)=g" gpx_to_skiz/"$filename"/Track.xml
   # Create Track.xml - Times
-  START_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | head -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%z" -d)"
-  END_TIME="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | tail -1 | sed 's/^/@/' | xargs date +"%Y-%m-%dT%H:%M:%S%z" -d)"
+
+  # Create Track.xml - Times (epoch seconds from Nodes.csv col1; may contain decimals)
+  START_RAW="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | head -1 | sed 's/^/@/')"
+  END_RAW="$(cat gpx_to_skiz/"$filename"/Nodes.csv | awk -F "," '{ print $1 }' | tail -1 | sed 's/^/@/')"
+  START_TIME="$(date_iso_from_epoch "$START_RAW")"
+  END_TIME="$(date_iso_from_epoch "$END_RAW")"
   sed -i "s=VAR_start=$START_TIME=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_finish=$END_TIME=g" gpx_to_skiz/"$filename"/Track.xml
   sed -i "s=VAR_duration=$(($(date -d ${END_TIME%.*} +%s)-$(date -d ${START_TIME%.*} +%s))).000=g" gpx_to_skiz/"$filename"/Track.xml

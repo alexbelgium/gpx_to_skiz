@@ -13,7 +13,9 @@ rm gpx_to_skiz.sh
 
 It will convert all gpx files in the run folder.
 The converted files will be stored in a new folder named gps_to_skiz. 
-Import them into ski tracks. All segment data and statistics should be automatically filled. Otherwise, go in the segments section, and scroll down to trigger a refresh.
+Import them into ski tracks. After import, go in the segments section, and scroll down to trigger a refresh.
+
+The v2 converts both gpx and slopes files.
 
 ## Limitations
 - Only Ubuntu and Alpine supported for the moment (Alpine will install the edge repositories)

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # GPX/.slopes -> Ski Tracks .skiz
-# v7_fixed2:
 # - GPX: keep original trackpoints (no resample), never output negative course/speed,
 #        Nodes.csv matches repo-style (epoch seconds .000, vdop=0.0, last=0.25).
 # - .slopes: reads GPS.csv/RawGPS.csv/Metadata.xml (actions -> segments)

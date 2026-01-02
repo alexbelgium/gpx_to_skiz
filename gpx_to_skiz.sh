@@ -137,7 +137,7 @@ for input in *.gpx; do
   zip -j -r gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename"/*
   mv gpx_to_skiz/"$filename".zip gpx_to_skiz/"$filename".skiz
   # Remove temporary folder
-  rm "gpx_to_skiz/$input"
+  rm "$input"
   rm -r gpx_to_skiz/"$filename"
 done
 

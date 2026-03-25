@@ -1,0 +1,18 @@
+# GLOBAL ############################################
+DESCRIPTION       Ski Tracks converter
+EXTENSION         csv
+ENCODING          UTF-8
+DATUM             European 1950
+# LAYOUT ############################################
+FIELD_DELIMITER     COMMA
+RECORD_DELIMITER    NEWLINE
+#BADCHARS            #
+# FIELDS ############################################
+IFIELD   TIMET_TIME,"","%lld.000"  # Time in unix
+IFIELD   LAT_DECIMAL,"", "%.6f"    # Latitude
+IFIELD   LON_DECIMAL,"", "%.6f"    # Longitude
+IFIELD   ALT_METERS,"","%.2f"      # Altitude in meters
+IFIELD   PATH_COURSE,"","%f"       # Bearing
+IFIELD   PATH_SPEED,"", "%.6f"     # Path speed
+IFIELD   GPS_VDOP,"","%f"          # GPS precision
+IFIELD   CONSTANT,"0.250000","%s"  # ???

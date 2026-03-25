@@ -1,5 +1,5 @@
 # GPX and .slopes to skiz converter
-This app will take all .gpx from the folder it is executed, and convert it to .skiz format compatible with Ski Tracks.
+This app will take all .gpx or .slopes from the folder it is executed, and convert it to .skiz format compatible with Ski Tracks.
 I have no linked with Ski Tracks devs, and am only doing this as I am a huge fan of this super app and want to import gpx generated through other apps (the lead dev, Steve, also offers to do it himself if you send him an email containing gpx files ; but I didn't want to bother him every time).
 
 ## Usage
@@ -11,11 +11,8 @@ chmod +x gpx-slopes_to_skiz_v2.sh
 rm gpx-slopes_to_skiz_v2.sh
 ```
 
-It will convert all gpx files in the run folder.
 The converted files will be stored in a new folder named gps_to_skiz. 
 Import them into ski tracks. After import, go in the segments section, and scroll down to trigger a refresh.
-
-The v2 converts both gpx and slopes files.
 
 ## Limitations
 - Only Ubuntu and Alpine supported for the moment (Alpine will install the edge repositories)

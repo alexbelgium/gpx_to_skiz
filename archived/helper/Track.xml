@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created using CCXMLEncoder(Android), Copyright 2020 Core Coders Ltd. -->
+<track version="1.0" 
+	parseObjectId="VAR_parseObjectId"
+	start="VAR_start" 
+	finish="VAR_finish" 
+	duration="VAR_duration" 
+	tz="VAR_tz" 
+	name="VAR_name" 
+	description="unknown" 
+	activity="unknown"
+	conditions="unknown" 
+	weather="unknown" 
+	rating="0"
+	device="unknown" 
+	sensors="unknown" 
+	created="" 
+	modified="" 
+	owner="skitracks-android@corecoders.com">
+	<metrics>
+		<maxspeed>0</maxspeed>
+		<maxdescentspeed>0</maxdescentspeed>
+		<maxascentspeed>0</maxascentspeed>
+		<maxdescentsteepness>0</maxdescentsteepness>
+		<maxascentsteepness>0</maxascentsteepness>
+		<maxverticaldescentspeed>0</maxverticaldescentspeed>
+		<maxverticalascentspeed>0</maxverticalascentspeed>
+		<totalascent>0</totalascent>
+		<totaldescent>0</totaldescent>
+		<maxaltitude>0</maxaltitude>
+		<minaltitude>0</minaltitude>
+		<distance>0</distance>
+		<profiledistance>0.0</profiledistance>
+		<descentdistance>0</descentdistance>
+		<ascentdistance>0</ascentdistance>
+		<averagespeed>0</averagespeed>
+		<averagedescentspeed>0</averagedescentspeed>
+		<averageascentspeed>0</averageascentspeed>
+		<duration>0</duration>
+		<startaltitude>0</startaltitude>
+		<finishaltitude>0</finishaltitude>
+		<ascents>0</ascents>
+		<descents>0</descents>
+		<laps>0</laps>
+	</metrics>
+</track>
